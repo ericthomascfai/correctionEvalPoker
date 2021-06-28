@@ -7,8 +7,8 @@ bool trouveCarteidentique(const char*);
 bool paire(const char*);
 bool deuxpaire(const char *);
 bool brelan(const char*);
-void test(char *);
-bool carre(char *);
+void test(const char *);
+bool carre(const char *);
 bool trouveCarteidentique(char *main) {
     for(int i=0;i<5;i++)
     {
