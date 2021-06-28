@@ -35,7 +35,7 @@ bool generateMain(char *main) {
     for(int i=0;i<5;i++) //boucle pour choisir la carte a tester
     {
         cpt=0;
-        for(int j=i+1;j<5;j++) //boucle de comparaison avec les autres cartes
+        for(int j=0;j<5;j++) //boucle de comparaison avec les autres cartes
         {
             if(main[i]==main[j]) //si on on trouve en double
                 cpt++; //incrémentation du compteur
