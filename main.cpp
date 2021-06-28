@@ -8,8 +8,21 @@ bool paire(const char*);
 bool deuxpaire(const char *);
 bool brelan(const char*);
 void test(char *);
-bool carre(char *main);
+bool carre(char *);
+bool trouveCarteidentique(char *main) {
+    for(int i=0;i<5;i++)
+    {
+        for(int j=i+1;j<5;j++)
+        {
+            if(main[i]==main[j])
+            {
 
+                return true;
+            }
+        }
+    }
+    return false;
+}
 bool generateMain(char *main) {
 
     /********************génération de la main*********************/
@@ -22,7 +35,7 @@ bool generateMain(char *main) {
     for(int i=0;i<5;i++) //boucle pour choisir la carte a tester
     {
         cpt=0;
-        for(int j=0;j<5;j++) //boucle de comparaison avec les autres cartes
+        for(int j=i+1;j<5;j++) //boucle de comparaison avec les autres cartes
         {
             if(main[i]==main[j]) //si on on trouve en double
                 cpt++; //incrémentation du compteur
@@ -65,7 +78,7 @@ bool paire(char *main) {
 bool deuxpaire(char *main) {
     int cpt=0;
     int cptpaire=0;
-    if(trouveCarteidentique(main)&& !brelan(main))
+    if(trouveCarteidentique(main))
     {
         for(int i=0;i<5;i++) //boucle pour choisir la carte a tester
         {
@@ -88,8 +101,8 @@ bool deuxpaire(char *main) {
 }
 bool brelan(const char *main) {
     int cpt=0;
-    //if(trouveCarteidentique(main))
-    //{
+    if(trouveCarteidentique(main))
+    {
         for(int i=0;i<5;i++) //boucle pour choisir la carte a tester
         {
             cpt=0;
@@ -109,51 +122,40 @@ bool brelan(const char *main) {
 
         }
 
-   // }
-
-    return false;
-}
-bool trouveCarteidentique(char *main) {
-    for(int i=0;i<5;i++)
-    {
-        for(int j=i+1;j<5;j++)
-        {
-            if(main[i]==main[j])
-            {
-
-                return true;
-            }
-        }
     }
+
     return false;
 }
+
 bool carre(const char *main) {
-    int cpt=0;
-    if(trouveCarteidentique(main))
-    {
-    for(int i=0;i<5;i++) //boucle pour choisir la carte a tester
-    {
-        cpt=0;
-        for(int j=i+1;j<5;j++) //boucle de comparaison avec les autres cartes
+    int cpt = 0;
+    if (trouveCarteidentique(main)) {
+        for (int i = 0; i < 5; i++) //boucle pour choisir la carte a tester
         {
-            if(main[i]==main[j]) //si on on trouve en double
-
+            cpt = 0;
+            for (int j = i + 1; j < 5; j++) //boucle de comparaison avec les autres cartes
             {
-                cpt++;//incrémentation du compteur
+                if (main[i] == main[j]) //si on on trouve en double
 
+                {
+                    cpt++;//incrémentation du compteur
+
+                }
+                if (cpt == 3) //si égal à 3
+                {
+                    return true; //main carre
+                }
             }
-            if(cpt==3) //si égal à 3
-            {
-                return true; //main carre
-            }
+
         }
-
     }
-
-    }
-
     return false;
-}
+    }
+
+
+
+
+
 void test(char *main) {
     for(int i=0;i<100;i++)
     {
@@ -180,3 +182,4 @@ int main() {
     test(mamain);
     return 0;
 }
+
